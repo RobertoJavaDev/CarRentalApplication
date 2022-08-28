@@ -1,9 +1,15 @@
 package pl.robertojavadev.carrentalapp.bodystyle.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
+@Entity
+@Table(name = "body_styles")
 public class BodyStyle {
 
+    @Id
     private UUID id;
 
     private String name;
