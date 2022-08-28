@@ -24,21 +24,21 @@ public class BodyStyleController {
 
     @GetMapping("{id}")
     public BodyStyle getBodyStyle(@PathVariable UUID id){
-        return null;
+        return bodyStyleService.getBodyStyle(id);
     }
 
     @PostMapping
     public BodyStyle createBodyStyle(@RequestBody BodyStyle bodyStyle){
-        return null;
+        return bodyStyleService.createBodyStyle(bodyStyle);
     }
 
     @PutMapping("{id}")
     public BodyStyle updateBodyStyle(@PathVariable UUID id, @RequestBody BodyStyle bodyStyle){
-        return null;
+        return bodyStyleService.updateBodyStyle(id, bodyStyle);
     }
 
     @DeleteMapping("{id}")
     public void deleteBodyStyle(@PathVariable UUID id){
-
+        bodyStyleService.deleteBodyStyle(id);
     }
 }
