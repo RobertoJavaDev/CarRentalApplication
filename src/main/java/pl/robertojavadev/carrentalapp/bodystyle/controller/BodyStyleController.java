@@ -19,7 +19,7 @@ public class BodyStyleController {
 
     @GetMapping
     public List<BodyStyle> getBodyStyles(){
-        return null;
+        return bodyStyleService.getBodyStyles();
     }
 
     @GetMapping("{id}")
