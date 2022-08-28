@@ -2,6 +2,7 @@ package pl.robertojavadev.carrentalapp.bodystyle.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pl.robertojavadev.carrentalapp.bodystyle.domain.model.BodyStyle;
+import pl.robertojavadev.carrentalapp.bodystyle.service.BodyStyleService;
 
 import java.util.List;
 import java.util.UUID;
