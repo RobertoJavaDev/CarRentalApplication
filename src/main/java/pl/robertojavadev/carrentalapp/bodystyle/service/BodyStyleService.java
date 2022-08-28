@@ -1,6 +1,7 @@
 package pl.robertojavadev.carrentalapp.bodystyle.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.robertojavadev.carrentalapp.bodystyle.domain.model.BodyStyle;
 import pl.robertojavadev.carrentalapp.bodystyle.domain.repository.BodyStyleRepository;
 
@@ -16,22 +17,33 @@ public class BodyStyleService {
         this.bodyStyleRepository = bodyStyleRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<BodyStyle> getBodyStyles(){
-        return null;
+        return bodyStyleRepository.findAll();
     }
 
-    public BodyStyle getBodyStyle(UUID id){
-        return null;
+    @Transactional(readOnly = true)
+    public BodyStyle
+    getBodyStyle(UUID id){
+        return bodyStyleRepository.getReferenceById(id);
     }
 
+    @Transactional
     public BodyStyle createBodyStyle(BodyStyle bodyStyleRequest){
-        return null;
+        BodyStyle bodyStyle = new BodyStyle();
+        bodyStyle.setName(bodyStyleRequest.getName());
+        return bodyStyleRepository.save(bodyStyle);
     }
 
+    @Transactional
     public BodyStyle updateBodyStyle(UUID id, BodyStyle bodyStyleRequest){
-        return null;
+        BodyStyle bodyStyle = bodyStyleRepository.getReferenceById(id);
+        bodyStyle.setName(bodyStyleRequest.getName());
+        return bodyStyleRepository.save(bodyStyle);
     }
 
+    @Transactional
     public void deleteBodyStyle(UUID id){
+        bodyStyleRepository.deleteById(id);
     }
 }
