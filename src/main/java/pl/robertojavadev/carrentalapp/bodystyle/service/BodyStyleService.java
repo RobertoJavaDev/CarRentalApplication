@@ -23,9 +23,8 @@ public class BodyStyleService {
     }
 
     @Transactional(readOnly = true)
-    public BodyStyle
-    getBodyStyle(UUID id){
-        return bodyStyleRepository.getReferenceById(id);
+    public Optional<BodyStyle> getBodyStyle(UUID id){
+        return bodyStyleRepository.findById(id);
     }
 
     @Transactional
