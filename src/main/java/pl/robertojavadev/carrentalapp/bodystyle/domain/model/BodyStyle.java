@@ -1,8 +1,8 @@
 package pl.robertojavadev.carrentalapp.bodystyle.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
