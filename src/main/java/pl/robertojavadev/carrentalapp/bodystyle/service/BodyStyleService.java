@@ -1,30 +1,49 @@
 package pl.robertojavadev.carrentalapp.bodystyle.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.robertojavadev.carrentalapp.bodystyle.domain.model.BodyStyle;
+import pl.robertojavadev.carrentalapp.bodystyle.domain.repository.BodyStyleRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
 public class BodyStyleService {
 
+    private final BodyStyleRepository bodyStyleRepository;
+
+    public BodyStyleService(BodyStyleRepository bodyStyleRepository) {
+        this.bodyStyleRepository = bodyStyleRepository;
+    }
+
+    @Transactional(readOnly = true)
     public List<BodyStyle> getBodyStyles(){
-        return null;
+        return bodyStyleRepository.findAll();
     }
 
-    public BodyStyle getBodyStyle(UUID id){
-        return null;
+    @Transactional(readOnly = true)
+    public Optional<BodyStyle> getBodyStyle(UUID id){
+        return bodyStyleRepository.findById(id);
     }
 
+    @Transactional
     public BodyStyle createBodyStyle(BodyStyle bodyStyleRequest){
-        return null;
+        BodyStyle bodyStyle = new BodyStyle();
+        bodyStyle.setName(bodyStyleRequest.getName());
+        return bodyStyleRepository.save(bodyStyle);
     }
 
+    @Transactional
     public BodyStyle updateBodyStyle(UUID id, BodyStyle bodyStyleRequest){
-        return null;
+        BodyStyle bodyStyle = bodyStyleRepository.getReferenceById(id);
+        bodyStyle.setName(bodyStyleRequest.getName());
+        return bodyStyleRepository.save(bodyStyle);
     }
 
+    @Transactional
     public void deleteBodyStyle(UUID id){
+        bodyStyleRepository.deleteById(id);
     }
 }

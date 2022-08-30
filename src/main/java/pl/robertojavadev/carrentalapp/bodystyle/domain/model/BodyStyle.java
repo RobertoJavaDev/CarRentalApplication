@@ -1,18 +1,25 @@
 package pl.robertojavadev.carrentalapp.bodystyle.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "body_styles")
 public class BodyStyle {
 
+    @Id
     private UUID id;
 
     private String name;
 
     public BodyStyle() {
+        this.id = UUID.randomUUID();
     }
 
     public BodyStyle(UUID id, String name) {
-        this.id = id;
+        this.id = UUID.randomUUID();
         this.name = name;
     }
 
