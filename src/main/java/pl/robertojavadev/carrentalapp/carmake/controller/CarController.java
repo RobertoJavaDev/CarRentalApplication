@@ -2,6 +2,7 @@ package pl.robertojavadev.carrentalapp.carmake.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pl.robertojavadev.carrentalapp.carmake.domain.model.Car;
+import pl.robertojavadev.carrentalapp.carmake.service.CarService;
 
 import java.util.List;
 import java.util.UUID;
