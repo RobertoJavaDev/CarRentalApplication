@@ -1,10 +1,17 @@
 package pl.robertojavadev.carrentalapp.carmake.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
+@Entity
+@Table(name = "car_make")
 public class CarMake {
 
+    @Id
     private UUID id;
+
     private String name;
 
     public CarMake(UUID id, String name) {
