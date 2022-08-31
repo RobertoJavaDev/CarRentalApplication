@@ -19,25 +19,26 @@ public class CarMakeController {
 
     @GetMapping
     public List<CarMake> getCarMakes(){
-        return null;
+        return carMakeService.getCarMakes();
     }
 
     @GetMapping("{id}")
     public CarMake getCarMake(@PathVariable UUID id){
-        return null;
+        return carMakeService.getCarMake(id);
     }
 
     @PostMapping
     public CarMake createCarMake(@RequestBody CarMake carMake){
-        return null;
+        return carMakeService.createCarMake(carMake);
     }
 
     @PutMapping("{id}")
     public CarMake updateCarMake(@PathVariable UUID id, @RequestBody CarMake carMake){
-        return null;
+        return carMakeService.updateCarMake(id, carMake);
     }
 
     @DeleteMapping("{id}")
     public void deleteCarMake(@PathVariable UUID id){
+        carMakeService.deleteCarMake(id);
     }
 }
