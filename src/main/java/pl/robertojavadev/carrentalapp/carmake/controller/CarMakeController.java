@@ -5,6 +5,7 @@ import pl.robertojavadev.carrentalapp.carmake.domain.model.CarMake;
 import pl.robertojavadev.carrentalapp.carmake.service.CarMakeService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -23,7 +24,7 @@ public class CarMakeController {
     }
 
     @GetMapping("{id}")
-    public CarMake getCarMake(@PathVariable UUID id){
+    public Optional<CarMake> getCarMake(@PathVariable UUID id){
         return carMakeService.getCarMake(id);
     }
 
