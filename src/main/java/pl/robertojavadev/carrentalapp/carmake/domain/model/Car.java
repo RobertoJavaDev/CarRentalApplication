@@ -2,6 +2,7 @@ package pl.robertojavadev.carrentalapp.carmake.domain.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.UUID;
 
@@ -11,18 +12,27 @@ public class Car {
 
     @Id
     private UUID id;
-
     private String name;
-
     private String engineCapacity;
-
     private String price;
 
+    @ManyToOne
+    private CarMake carMake;
+
     public Car() {
+        this.id=UUID.randomUUID();
+    }
+
+    public CarMake getCarMake() {
+        return carMake;
+    }
+
+    public void setCarMake(CarMake carMake) {
+        this.carMake = carMake;
     }
 
     public Car(UUID id, String name, String engineCapacity, String price) {
-        this.id = id;
+        this();
         this.name = name;
         this.engineCapacity = engineCapacity;
         this.price = price;
