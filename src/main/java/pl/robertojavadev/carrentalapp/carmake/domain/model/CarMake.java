@@ -1,8 +1,10 @@
 package pl.robertojavadev.carrentalapp.carmake.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import pl.robertojavadev.carrentalapp.bodystyle.domain.model.BodyStyle;
+
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -11,15 +13,30 @@ public class CarMake {
 
     @Id
     private UUID id;
-
     private String name;
 
-    public CarMake(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @ManyToOne
+    private BodyStyle bodyStyle;
+
+    @OneToMany
+    private Set<Car> cars;
 
     public CarMake() {
+        this.id = UUID.randomUUID();
+    }
+
+    public CarMake addCar(Car car) {
+        if (cars == null){
+            cars = new LinkedHashSet<>();
+        }
+        car.setCarMake(this);
+        cars.add(car);
+        return this;
+    }
+
+    public CarMake(UUID id, String name) {
+        this();
+        this.name = name;
     }
 
     public UUID getId() {
